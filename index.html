@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LG</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #222;
+            color: #fff;
+        }
+        #main-text {
+            margin: 50px;
+            font-size: 24px;
+        }
+        #additional-text {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        #buttons {
+            display: flex;
+            justify-content: center;
+        }
+        .button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-text">
+        Você ama o Mateus?
+    </div>
+    <div id="additional-text"></div>
+    <div id="buttons">
+        <button id="yes-button" class="button">Sim</button>
+        <button id="no-button" class="button">Não</button>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById("yes-button");
+        const noButton = document.getElementById("no-button");
+        const additionalText = document.getElementById("additional-text");
+
+        yesButton.addEventListener("click", function () {
+            yesButton.classList.add("hidden"); // Oculta o botão "Sim"
+            noButton.classList.add("hidden"); // Oculta o botão "Não"
+
+            // Criar um elemento de imagem e definir o atributo src
+            const image = document.createElement("img");
+            image.src = "https://i.pinimg.com/736x/89/4e/98/894e98a7dd73da2dde06b181b4daca5e.jpg";
+
+            // Adicionar a imagem à página
+            document.body.appendChild(image);
+        });
+
+        noButton.addEventListener("click", function () {
+            const maxWidth = window.innerWidth - noButton.clientWidth;
+            const maxHeight = window.innerHeight - noButton.clientHeight;
+
+            const newX = Math.floor(Math.random() * maxWidth);
+            const newY = Math.floor(Math.random() * maxHeight);
+
+            noButton.style.position = "absolute";
+            noButton.style.top = `${newY}px`;
+            noButton.style.left = `${newX}px`;
+        });
+    </script>
+</body>
+</html>
